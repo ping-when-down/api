@@ -38,6 +38,12 @@ router.get("/:url", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
+  console.log(req.body);
+  Website.create({
+    title: req.body.title,
+    url: req.body.url,
+    interval: req.body.interval,
+  });
   res.send(req.body);
 });
 
