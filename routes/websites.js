@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 /* * * * * */
 /* GET method for [/websites/:url] */
 /* Responds with website objects that match the requested url. */
-router.get("/:url", async (req, res) => {
+router.get("/id", async (req, res) => {
   res.send("Not yet implemented.");
 });
 
@@ -38,7 +38,6 @@ router.get("/:url", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
-  console.log(req.body);
   Website.create({
     title: req.body.title,
     url: req.body.url,
