@@ -38,7 +38,7 @@ router.get("/:url", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
-  res.send("Not yet implemented.");
+  res.send(req.body);
 });
 
 /* * */
