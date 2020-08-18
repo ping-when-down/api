@@ -38,12 +38,21 @@ router.get("/id", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
-  Website.create({
+  await Website.create({
     title: req.body.title,
     url: req.body.url,
     interval: req.body.interval,
   });
   res.send(req.body);
+});
+
+/* * */
+/* * */
+/* * * * * */
+/* DELETE method for [/websites] */
+/* Delete an existing website object. */
+router.delete("/:id", async (req, res) => {
+  await Website.findByIdAndDelete(id);
 });
 
 /* * */
