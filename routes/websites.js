@@ -52,10 +52,12 @@ router.post("/", async (req, res) => {
 /* PUT method for [/websites] */
 /* Create a new website object. */
 router.put("/:id", async (req, res) => {
+  console.log(req.body);
   const modifiedWebsite = await Website.findByIdAndUpdate(
     req.params.id,
     req.body
   );
+  console.log(modifiedWebsite);
   res.send(modifiedWebsite);
 });
 
