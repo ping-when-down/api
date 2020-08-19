@@ -52,7 +52,8 @@ router.post("/", async (req, res) => {
 /* DELETE method for [/websites] */
 /* Delete an existing website object. */
 router.delete("/:id", async (req, res) => {
-  await Website.findByIdAndDelete(req.params.id);
+  const deletedWebsite = await Website.findByIdAndDelete(req.params.id);
+  res.send(deletedWebsite);
 });
 
 /* * */
