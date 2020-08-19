@@ -18,9 +18,8 @@ const Website = require("../models/Website");
 /* Responds with vehicle objects that match the requested route. */
 router.get("/", async (req, res) => {
   // Query the database and get items matching the requested timeframe
-  const websites = await Website.find({});
-
-  res.send(websites);
+  const allWebsites = await Website.find({});
+  res.send(allWebsites);
 });
 
 /* * */
@@ -29,7 +28,8 @@ router.get("/", async (req, res) => {
 /* GET method for [/websites/:url] */
 /* Responds with website objects that match the requested url. */
 router.get("/id", async (req, res) => {
-  res.send("Not yet implemented.");
+  const requestedWebsite = await Website.findById(req.params.id);
+  res.send(requestedWebsite);
 });
 
 /* * */
@@ -38,12 +38,25 @@ router.get("/id", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
-  await Website.create({
+  const createdWebsite = await Website.create({
     title: req.body.title,
     url: req.body.url,
     interval: req.body.interval,
   });
-  res.send(req.body);
+  res.send(createdWebsite);
+});
+
+/* * */
+/* * */
+/* * * * * */
+/* PUT method for [/websites] */
+/* Create a new website object. */
+router.put("/:id", async (req, res) => {
+  const modifiedWebsite = await Website.findByIdAndUpdate(
+    req.params.id,
+    req.body
+  );
+  res.send(modifiedWebsite);
 });
 
 /* * */
