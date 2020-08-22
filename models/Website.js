@@ -1,5 +1,5 @@
-/* * */
-/* * */
+"use strict";
+
 /* * * * * */
 /* WEBSITE */
 /* * */
@@ -13,6 +13,10 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model(
   "Website",
   new mongoose.Schema({
+    active: {
+      type: Boolean,
+      required: true,
+    },
     index: {
       type: Number,
       maxlength: 3,
@@ -22,7 +26,12 @@ module.exports = mongoose.model(
       maxlength: 30,
       required: true,
     },
-    url: {
+    protocol: {
+      type: String,
+      maxlength: 100,
+      required: true,
+    },
+    host: {
       type: String,
       maxlength: 100,
       required: true,
@@ -37,14 +46,19 @@ module.exports = mongoose.model(
     },
     statusMessage: {
       type: String,
-      maxlength: 30,
+      maxlength: 100,
     },
     responseTime: {
       type: Number,
       maxlength: 5,
     },
     lastChecked: {
-      type: Date,
+      type: String,
+      maxlength: 40,
+    },
+    lastDown: {
+      type: String,
+      maxlength: 40,
     },
   })
 );
