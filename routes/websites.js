@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 /* * */
 /* * */
 /* * * * * */
-/* GET method for [/websites/:url] */
+/* GET method for [/websites/:id] */
 /* Responds with website objects that match the requested url. */
 router.get("/:id", async (req, res) => {
   const requestedWebsite = await Website.findById(req.params.id);
