@@ -38,12 +38,10 @@ router.get("/:id", async (req, res) => {
 /* POST method for [/websites] */
 /* Create a new website object. */
 router.post("/", async (req, res) => {
-  console.log(req.body);
   const createdWebsite = await Website.create({
     index: req.body.index,
     title: req.body.title,
-    url: req.body.url,
-    interval: req.body.interval,
+    host: req.body.host,
   });
   res.send(createdWebsite);
 });
