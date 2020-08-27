@@ -39,8 +39,10 @@ router.get("/:id", async (req, res) => {
 /* Create a new website object. */
 router.post("/", async (req, res) => {
   const createdWebsite = await Website.create({
-    index: req.body.index,
     title: req.body.title,
+    active: req.body.active,
+    index: req.body.index,
+    https: req.body.https,
     host: req.body.host,
   });
   res.send(createdWebsite);
